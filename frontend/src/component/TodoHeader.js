@@ -73,7 +73,7 @@ const TodoHeader = () => {
     } else {
       // Handle new title creation
       try {
-        const response = await fetch(`${process.env.REACT_APP_PORT}/api/createtitle`, {
+        const response = await fetch(`${process.env.REACT_APP_PORT}api/createtitle`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
