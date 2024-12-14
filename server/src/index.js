@@ -30,6 +30,18 @@ app.use(express.urlencoded({extended:true}));
 // app.use("/api",subtitleRoutes)
 
 
+<<<<<<< HEAD
+=======
+// Handle HEAD requests for the root path
+app.head('/', (req, res) => {
+  res.status(200).send();  // Send only headers, with a 200 OK status
+});
+
+// Handle GET requests for the root path
+app.get('/', (req, res) => {
+  res.json("Hii");  // Response for GET requests to the root path
+});
+>>>>>>> f45c9a95137d8be8b2d9bee36f959b462767c9c0
 
 
 app.listen(process.env.PORT,()=>{
