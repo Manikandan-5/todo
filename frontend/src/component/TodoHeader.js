@@ -30,7 +30,7 @@ const TodoHeader = () => {
   // Fetch all subtitles
   const fetchSubtitles = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/subtitles');
+      const response = await fetch(`${process.env.PORT}api/subtitles`);
       if (response.ok) {
         const data = await response.json();
         setAllSubtitles(data);
@@ -52,7 +52,7 @@ const TodoHeader = () => {
     if (isEditingTitle && currentTitleId) {
       // Handle title update
       try {
-        const response = await fetch(`http://localhost:5000/api/updatetitle/${currentTitleId}`, {
+        const response = await fetch(`${process.env.PORT}api/updatetitle/${currentTitleId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ const TodoHeader = () => {
     } else {
       // Handle new title creation
       try {
-        const response = await fetch('http://localhost:5000/api/createtitle', {
+        const response = await fetch(`${process.env.PORT}/api/createtitle`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ const TodoHeader = () => {
   // Save a new subtitle
   const handleSaveSubtitle = async (titleId) => {
     try {
-      const response = await fetch('http://localhost:5000/api/createsubtitle', {
+      const response = await fetch(`${process.env.PORT}api/createsubtitle`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ const TodoHeader = () => {
   // Delete a title
   const handleDeleteTitle = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/deletetitle/${id}`, {
+      const response = await fetch(`${process.env.PORT}api/deletetitle/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {
@@ -134,7 +134,7 @@ const TodoHeader = () => {
   const handleEditSubtitle = async () => {
     if (currentSubtitleId && subtitle) {
       try {
-        const response = await fetch(`http://localhost:5000/api/updatesubtitle/${currentSubtitleId}`, {
+        const response = await fetch(`${process.env.PORT}api/updatesubtitle/${currentSubtitleId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -158,7 +158,7 @@ const TodoHeader = () => {
   // Delete a subtitle
   const handleDeleteSubtitle = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/deletesubtitle/${id}`, {
+      const response = await fetch(`${process.env.PORT}api/deletesubtitle/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {
