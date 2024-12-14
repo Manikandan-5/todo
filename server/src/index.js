@@ -40,6 +40,7 @@ app.use("/api", todotitleRoutes);
 app.use("/api", subtitleRoutes);
 
 // Listen on the specified port
-app.listen(process.env.PORT, () => {
-  console.log("Server Connected");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
