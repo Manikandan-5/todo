@@ -31,8 +31,14 @@ app.get('/api/data', (req, res) => {
   res.json({ message: 'CORS fixed!' });
 });
 
+// Handle HEAD requests for the root path
+app.head('/', (req, res) => {
+  res.status(200).send();  // Send only headers, with a 200 OK status
+});
+
+// Handle GET requests for the root path
 app.get('/', (req, res) => {
-  res.json("Hii");
+  res.json("Hii");  // Response for GET requests to the root path
 });
 
 // API routes
