@@ -12,17 +12,25 @@ dotenv.config();
 connectDB()
 const app=express();
 
-app.use(cors());
+app.use(cors(
+    {
+        origin: ['https://todo-client-five-chi.vercel.app'], // Allow this specific origin
+        methods: ["GET","HEAD","PUT","PATCH","POST","DELETE"],
+        allowedHeaders: 'Content-Type, Authorization', // Allowed methods
+        credentials: true, // Allow cookies or authorization headers
+      }
+));
 
-const corsOptions = {
-    origin: 'https://todo-client-five-chi.vercel.app', // Allow this specific origin
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed methods
-    credentials: true, // Allow cookies or authorization headers
-  };
-  
+
   app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.get('/api/data', (req, res) => {
+    res.json({ message: 'CORS fixed!' });
+  });
+  app.get('/', (req, res) => {
+    res.json("Hii");
+  });
 app.use("/api",todotitleRoutes)
 app.use("/api",subtitleRoutes)
 app.options('*', cors(corsOptions)); // Handle preflight requests
