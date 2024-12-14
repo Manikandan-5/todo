@@ -1,4 +1,4 @@
 {
   "rewrites":[
     {
-      "source":"/(.*)","destination":"https://localhost:5000/api/$1"}]}
+      "source":"/(.*)","destination":"index.js"}]}
